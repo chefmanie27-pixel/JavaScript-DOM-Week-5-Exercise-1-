@@ -1,0 +1,225 @@
+/* ==========================================
+   1. RESET & BASE STYLES
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cinzel', 'Georgia', 'Times New Roman', serif; /* Classic fantasy serif style */
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-x: hidden;
+  color: #f3e8ff;
+  
+  /* Cosmic / Arcane Animated Gradient Background */
+  background: linear-gradient(-45deg, #090214, #1a0836, #04010a, #330c47);
+  background-size: 400% 400%;
+  animation: arcaneGlow 18s ease infinite;
+}
+
+/* Background Animation */
+@keyframes arcaneGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==========================================
+   2. TYPOGRAPHY
+   ========================================== */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #e0aaff;
+  letter-spacing: 2px;
+  /* Radiant magical text glow */
+  text-shadow: 0 0 10px rgba(157, 78, 221, 0.6),
+               0 0 20px rgba(157, 78, 221, 0.3),
+               0 0 30px rgba(224, 170, 255, 0.2);
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #c77dff;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================
+   3. THE SPELLBOOK CONTAINER (GLASSMORPHISM)
+   ========================================== */
+#spellArea {
+  width: 100%;
+  max-width: 520px;
+  padding: 45px 35px;
+  text-align: center;
+  
+  /* Frosted Glass Effect */
+  background: rgba(15, 8, 28, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  /* Arcane Border & Highlights */
+  border: 1px solid rgba(199, 125, 255, 0.2);
+  border-radius: 20px;
+  
+  /* Deep shadow drop with a hint of purple ambient light */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6),
+              0 0 30px rgba(123, 44, 191, 0.15);
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Subtly pulses the container's aura when active */
+#spellArea:hover {
+  border-color: rgba(199, 125, 255, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7),
+              0 0 40px rgba(123, 44, 191, 0.25);
+}
+
+/* ==========================================
+   4. INGREDIENTS VAULT
+   ========================================== */
+#ingredientsList {
+  margin: 30px 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#ingredientsList ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+#ingredientsList li {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #e0aaff;
+  padding: 8px 18px;
+  background: rgba(123, 44, 191, 0.15);
+  border: 1px solid rgba(157, 78, 221, 0.25);
+  border-radius: 30px;
+  box-shadow: inset 0 0 8px rgba(157, 78, 221, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#ingredientsList li:hover {
+  background: rgba(157, 78, 221, 0.3);
+  border-color: #e0aaff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(199, 125, 255, 0.3);
+}
+
+ shreds of mystical energy */
+/* ==========================================
+   5. ALCHEMY CHAMBER (RESULT SCREEN)
+   ========================================== */
+#spellResult {
+  margin: 35px 0;
+  padding: 25px 40px; /* Increased side padding so text never overlaps the stars */
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border-top: 1px solid rgba(199, 125, 255, 0.1);
+  border-bottom: 1px solid rgba(199, 125, 255, 0.1);
+  position: relative; /* Essential for absolute positioning to work */
+}
+
+
+#spellResult::before, #spellResult::after {
+  content: '✦';
+  position: absolute;
+  top: 50%; 
+  transform: translateY(-50%); 
+  color: rgba(199, 125, 255, 0.6); 
+  font-size: 1rem; 
+  text-shadow: 0 0 8px rgba(199, 125, 255, 0.8); 
+}
+
+#spellResult::before { 
+  left: 15px; 
+}
+
+#spellResult::after { 
+  right: 15px; 
+}
+
+#spellResult p {
+  color: inherit; /* Allows JavaScript to change the color on the fly */
+  font-style: italic;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  text-align: center;
+  text-shadow: inherit; /* Allows JavaScript to change the glow on the fly */
+  transition: color 0.5s ease, text-shadow 0.5s ease; /* Makes the color transition smoothly! */
+}
+
+/* ==========================================
+   6. ENCHANTED BUTTONS
+   ========================================== */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  border: none;
+  margin: 10px 6px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* The Primary Conjuring Button */
+#generateButton {
+  background: linear-gradient(135deg, #5a189a, #9d4edd);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(123, 44, 191, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+#generateButton:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #7b2cbf, #e0aaff);
+  color: #100526;
+  box-shadow: 0 8px 25px rgba(157, 78, 221, 0.6);
+}
+
+/* The Restorative Button */
+#resetButton {
+  background: rgba(255, 255, 255, 0.04);
+  color: #c77dff;
+  border: 1px solid rgba(199, 125, 255, 0.2);
+}
+
+#resetButton:hover {
+  background: rgba(199, 125, 255, 0.15);
+  color: #ffffff;
+  border-color: rgba(199, 125, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.98);
+}
